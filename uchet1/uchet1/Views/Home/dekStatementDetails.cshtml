@@ -1,0 +1,48 @@
+﻿@model IEnumerable<uchet1.Models.Mark>
+
+@{
+    ViewBag.Title = "Ведомость";
+}
+
+<h2>Ведомость '@ViewData["statement_title"]' по предмету @ViewData["statement_subject"] для группы '@ViewData["studgrname"]'</h2>
+
+<p>
+    @Html.ActionLink("Все ведомости", "Index") |
+    @Html.ActionLink("Сданные ведомости", "ReadyStatements")
+</p>
+<p><b>Данная ведомость: </b>
+    @if(ViewData["statement_status"]=="ready"){
+    @Html.ActionLink("Открыть", "StatementSetStatus", new { id = ViewData["statement_id"], status = "opened" }) }
+    @if(ViewData["statement_status"]!="closed"){
+    @Html.ActionLink("Закрыть", "StatementSetStatus", new { id = ViewData["statement_id"], status = "closed" })}
+    </p>
+@if (Model.Count() == 0)
+{
+    <b>Нет данных для показа</b>
+}
+else
+{
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.themark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_fio)
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.themark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_fio)
+        </td>
+    </tr>
+}
+
+</table>
+}

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<uchet1.Models.UserRoles>
+
+@{
+    ViewBag.Title = "Роли пользователей";
+}
+
+<h2>Роли пользователей</h2>
+    @Html.ActionLink("Показать всех пользователей","Index")
+<p>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.user_fio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_role)
+        </th>
+        <th>
+            Назначить роль
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_fio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_role)
+        </td>
+        <td>
+            @Html.ActionLink("Студ. (4)", "SetUserRole", new {  userid=item.id_user, roleid="4"  }) |
+            @Html.ActionLink("Преп. (3)", "SetUserRole", new { userid = item.id_user, roleid = "3" }) |
+            @Html.ActionLink("Сотр. дек. (2)", "SetUserRole", new { userid = item.id_user, roleid = "2" })
+        </td>
+    </tr>
+}
+
+</table>

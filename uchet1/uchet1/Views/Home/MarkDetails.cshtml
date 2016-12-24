@@ -1,0 +1,83 @@
+﻿@model IEnumerable<uchet1.Models.Mark>
+
+@{
+    ViewBag.Title = "Подробный просмотр оценки";
+}
+
+<h2>Подробный просмотр оценки</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        @foreach (var item in Model)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.id_mark)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.id_mark)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.id_statement)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.id_statement)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.statement_title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.statement_title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.subject_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.subject_id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.subject_title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.subject_title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.id_user)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.id_user)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.themark)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.themark)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.user_fio)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.user_fio)
+            </dd>
+        }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("< Список всех оценок", "Index")
+</p>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<uchet1.Models.Users>
+@using uchet1.DAO;
+@{
+    ViewBag.Title = "Students";
+}
+@{
+    RecordsDAO recordsDAO = new RecordsDAO();
+}
+<h2>Список студентов</h2>
+<p>
+    @Html.ActionLink("Роли пользователей", "UserRoles") | @Html.ActionLink("Список всех пользователей", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.studgroupname)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.birthdate)
+        </td>
+        <td>
+            @if(ViewData[item.Id]==null){
+            @Html.ActionLink("Установить", "SetGroupForStudent", new { newgroupfor=item.Id})
+            }else{
+            @ViewData[item.Id]
+            }
+        </td>
+    </tr>
+}
+
+</table>
